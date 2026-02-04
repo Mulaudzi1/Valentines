@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Valentine</title>
+
+  <style>
+    :root {
+      --pink-main: #f472b6;
+      --pink-soft: #fde2e4;
+      --pink-deep: #ec4899;
+
+      --white: #ffffff;
+      --grey-light: #f8fafc;
+      --grey-text: #64748b;
+      --black: #1e293b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Inter, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #fff0f6, transparent 60%),
+        linear-gradient(180deg, #fde2e4, #ffffff);
+      padding: 1.5rem;
+      color: var(--black);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--white);
+      border-radius: 24px;
+      padding: 2.6rem 2.3rem;
+      box-shadow:
+        0 30px 60px rgba(236, 72, 153, 0.15),
+        0 6px 16px rgba(15, 23, 42, 0.08);
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(236,72,153,0.08), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(244,114,182,0.08), transparent 40%);
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      color: var(--pink-deep);
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--grey-text);
+      margin-bottom: 1.8rem;
+    }
+
+    .question {
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.75rem 1.9rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .btn-yes {
+      background: linear-gradient(
+        135deg,
+        var(--pink-main),
+        var(--pink-deep)
+      );
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(236, 72, 153, 0.4);
+    }
+
+    .btn-yes:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(236, 72, 153, 0.5);
+    }
+
+    .btn-maybe {
+      background: var(--grey-light);
+      color: var(--black);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .success {
+      text-align: center;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .heart {
+      font-size: 3rem;
+      color: var(--pink-deep);
+      margin-bottom: 0.8rem;
+      animation: pulse 1.3s infinite;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ASK -->
+  <div class="card" id="ask">
+    <h1>Hey my love 💕</h1>
+
+    <p>
+      Valentine’s Day is about celebrating love,
+      and there’s no one else I’d rather celebrate with.
+    </p>
+
+    <p class="question">Will you be my Valentine?</p>
+
+    <div class="actions">
+      <button class="btn-yes" onclick="accept()">Yes 💖</button>
+      <button class="btn-maybe" onclick="decline()">Let me think</button>
+    </div>
+
+    <div class="footer">Made with love, just for you</div>
+  </div>
+
+  <!-- YES -->
+  <div class="card success hidden" id="yes">
+    <div class="heart">♥</div>
+
+    <h1>You said yes</h1>
+
+    <p>
+      That makes me so happy.
+      I can’t wait to spoil you and make
+      this Valentine’s Day unforgettable.
+    </p>
+
+    <p class="question">Happy Valentine’s Day 🤍</p>
+  </div>
+
+  <script>
+    function accept() {
+      document.getElementById("ask").classList.add("hidden");
+      document.getElementById("yes").classList.remove("hidden");
+    }
+
+    function decline() {
+      alert("Take your time… I’ll still be smiling 😊");
+    }
+  </script>
+</body>
+</html>
